@@ -1,0 +1,13 @@
+xcompmgr -n &
+xsetroot -solid black
+# ~/display/laptop.sh
+~/display/trayer.sh
+# pgrep -u kressler nm-applet || nm-applet &
+#xmodmap -e "remove Lock = Caps_Lock"
+#xmodmap -e "keysym Caps_Lock = Control_L"
+#xmodmap -e "add Control = Control_L"
+setxkbmap -option ctrl:nocaps
+#xinput --disable 11
+pgrep -u kressler xscreensaver || xscreensaver &
+xrdb -merge ~/.Xresources
+xinput set-button-map `xinput list | grep Kingsis | sed -e s/".*id="// | sed -e s/"\t.*"//` 1 2 3 4 5 6 7 0 2 0

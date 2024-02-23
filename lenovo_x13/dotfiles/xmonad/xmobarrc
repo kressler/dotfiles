@@ -1,0 +1,16 @@
+Config {
+  font = "xft:Bitstream Vera Sans Mono:size=8:antialias=true:style=Bold"
+, bgColor = "black"
+, fgColor = "grey"
+, position = TopW L 95
+, commands = [ Run Cpu ["-L","3","-H","50","--normal","green","--high","red","-w","3"] 10
+             , Run Memory ["-t","Mem: <usedratio>%","-w","3"] 10
+             , Run Battery [] 10
+             , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
+             , Run StdinReader
+             ]
+, sepChar = "%"
+, alignSep = "}{"
+, template = "%cpu% | %memory% | %battery% }  %StdinReader% { <fc=#ee9a00>%date%</fc>"
+, lowerOnStart = False
+}
