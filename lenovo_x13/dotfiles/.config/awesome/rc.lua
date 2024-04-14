@@ -17,6 +17,8 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
+-- Batter widget
+local battery_widget = require("battery-widget")
 
 -- Load Debian menu entries
 local debian = require("debian.menu")
@@ -230,7 +232,12 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
+            battery_widget {
+                -- pass options here
+                widget_text = "${AC_BAT}${color_on}${percent}%${color_off}${time_est}",
+                tooltip_text = "Battery ${state}${time_est}\nCapacity: ${capacity_percent}%",
+            },
+            --mykeyboardlayout,
             wibox.widget.systray(),
             mytextclock,
             s.mylayoutbox,
